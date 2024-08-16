@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,9 +22,25 @@ namespace TimeOff
             InitializeComponent();
         }
 
-        private void ButtonClick(object sender, RoutedEventArgs e)
+        private void OpenWebsite_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hello, World!");
+            // 열고 싶은 웹사이트 URL
+            string url = "https://g1playground.ncpworkplace.com/user/main/myboard/index";
+
+            try
+            {
+                // 디폴트 웹브라우저로 URL 열기
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true // UseShellExecute를 true로 설정해야 디폴트 브라우저가 사용됩니다.
+                });
+            }
+            catch (Exception ex)
+            {
+                // 예외 처리: 웹사이트를 열지 못한 경우
+                MessageBox.Show($"Cannot open the website: {ex.Message}");
+            }
         }
     }
 }

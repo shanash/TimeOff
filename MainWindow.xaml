@@ -27,10 +27,10 @@
         <StackPanel Grid.Row="0" Margin="10">
             <Label Content="출근시간 입력"/>
             <StackPanel Orientation="Horizontal">
-                <TextBox Width="25" Height="20"/>
+                <TextBox Name="HourTextBox" Width="25" Height="20"/>
                 <Label Content="시"/>
                 <TextBox Width="25" Height="20"/>
-                <Label Content="분"/>
+                <Label Name="MinuteTextBox" Content="분"/>
                 <StackPanel Orientation="Vertical">
                     <CheckBox Content="점심" Width="200"/>
                     <CheckBox Content="저녁" Width="200"/>
@@ -48,7 +48,7 @@
         <StackPanel Grid.Row="1" Margin="10">
             <Label Content="웹사이트 이동"/>
             <StackPanel Orientation="Horizontal">
-                <Button Content="네이버 웍스" Width="100" Height="30"/>
+                <Button Content="네이버 웍스" Width="100" Height="30" Click="OpenWebsite_Click"/>
             </StackPanel>
         </StackPanel>
 
