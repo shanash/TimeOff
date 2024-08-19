@@ -27,19 +27,19 @@
         <StackPanel Grid.Row="0" Margin="10">
             <Label Content="출근시간 입력"/>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="HourTextBox" Width="25" Height="20"/>
+                <TextBox Name="HourTextBox" Width="25" Height="20" PreviewTextInput="HourTextBox_PreviewTextInput"/>
                 <Label Content="시"/>
-                <TextBox Width="25" Height="20"/>
-                <Label Name="MinuteTextBox" Content="분"/>
+                <TextBox Name="MinuteTextBox" Width="25" Height="20" PreviewTextInput="MinuteTextBox_PreviewTextInput"/>
+                <Label Content="분"/>
                 <StackPanel Orientation="Vertical">
-                    <CheckBox Content="점심" Width="200"/>
-                    <CheckBox Content="저녁" Width="200"/>
-                    <CheckBox Content="반차" Width="200"/>
+                    <CheckBox Name="LunchCheckBox" Content="점심" Width="200"/>
+                    <CheckBox Name="DinnerCheckBox" Content="저녁" Width="200"/>
+                    <CheckBox Name="LeaveEarlyCheckBox" Content="반차" Width="200"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Content="지금 시간 넣기" Width="100" Height="30"/>
-                <Button Content="난 언제 퇴근해?" Width="100" Height="30"/>
+                <Button Content="지금 시간 넣기" Width="100" Height="30" Click="InputCurrentTime_Click"/>
+                <Button Content="난 언제 퇴근해?" Width="100" Height="30" Click="ShowTimeOff_Click"/>
             </StackPanel>
             <Button Content="알람 켜기" Width="100" Height="30"/>
         </StackPanel>
@@ -64,7 +64,7 @@
         <!-- 네 번째 그룹: 예시로 CheckBox 추가 -->
         <StackPanel Grid.Row="3" Margin="10">
             <Label Content="기타"/>
-            <Button Content="사용방법" Width="100" Height="30"/>
+            <Button Content="사용방법" Width="100" Height="30" Click="HowToUse_Click"/>
             <Button Content="프로그램 정보" Width="100" Height="30"/>
         </StackPanel>
 
