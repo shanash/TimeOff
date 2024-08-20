@@ -81,21 +81,20 @@ namespace TimeOff
                 // 출근 시간을 DateTime 객체로 생성
                 DateTime startTime = DateTime.Today.AddHours(hour).AddMinutes(minute);
 
-                int addedHour = (LeaveEarlyCheckBox.IsChecked == true) ? 3 : 7;
-                int addedMinute = (LeaveEarlyCheckBox.IsChecked == true) ? 45 : 30;
+                TimeSpan addedTime = (LeaveEarlyCheckBox.IsChecked == true) ? Define.LeaveEarlyTime : Define.WorkingTime;
 
                 if (LunchCheckBox.IsChecked == true)
                 {
-                    addedHour++;
+                    addedTime += Define.LunchTime;
                 }
 
                 if (DinnerCheckBox.IsChecked == true)
                 {
-                    addedHour++;
+                    addedTime += Define.DinnerTime;
                 }
 
                 // 현재 시각 가져오기
-                DateTime timeoff = startTime + new TimeSpan(addedHour, addedMinute, 0);
+                DateTime timeoff = startTime + addedTime;
 
                 // 결과 표시
                 MessageBox.Show($"나의 퇴근시간은 {((timeoff.Hour <= 12) ? $"오전 {timeoff.Hour}": $"오후 {timeoff.Hour - 12}")}시 {timeoff.Minute}분 이다.", "알림");
@@ -146,6 +145,32 @@ namespace TimeOff
                              "\t윈도우 시작 시 등록된 레지를 삭제합니다.";
 
             MessageBox.Show(message, "How To Use");
+        }
+
+        private void Info_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("좀 더 편한 삶으로 수정하기 위해 만들었습니다.");
+            sb.AppendLine();
+            sb.AppendLine("개발자 : 안성훈(신선교)");
+            sb.AppendLine();
+            sb.AppendLine("기준 시간");
+            sb.AppendLine("-통상 근무시간");
+            sb.AppendLine("-점심, 저녁 휴게시간");
+            sb.AppendLine("-반차");
+            sb.AppendLine();
+            sb.AppendLine("추가 기능이나 개선되었으면 하는 점,");
+            sb.AppendLine("버그문의 등은 메신저로 부탁드립니다.");
+            sb.AppendLine("혹은 아래 깃허브 주소로 수정하여 풀리퀘스트 부탁드립니다.");
+            sb.AppendLine();
+            sb.AppendLine();
+
+            MessageBox.Show(sb.ToString(), "How To Use");
+            */
+
+            InfoWindow infoWindow = new InfoWindow();
+            infoWindow.ShowDialog();
         }
     }
 }
